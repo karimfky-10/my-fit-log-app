@@ -20,11 +20,12 @@ const Card = ({ Item, id }) => {
   };
 
   return (
+    <div className="container mx-auto">
     <div
-      className="group overflow-hidden rounded-2xl border border-gray-800 bg-[#15171D]
-        shadow-lg transition-all duration-300 hover:-translate-y-1
-        hover:border-[#C2F800]/50 hover:shadow-2xl"
-    >
+      className=" group overflow-hidden rounded-2xl border border-gray-800 bg-[#15171D]
+      shadow-lg transition-all duration-300 hover:-translate-y-1
+      hover:border-[#C2F800]/50 hover:shadow-2xl"
+      >
       {/* Image Section */}
       <div className="relative overflow-hidden">
         <Link href={`/${id}`}>
@@ -33,8 +34,8 @@ const Card = ({ Item, id }) => {
             width={500}
             height={200}
             alt={Item.equipment || "Workout Image"}
-            className="h-60 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
+            className="h-50 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
         </Link>
 
         {/* Dark Gradient */}
@@ -49,25 +50,25 @@ const Card = ({ Item, id }) => {
           className={`absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full
             backdrop-blur-sm transition ${
               alreadySaved
-                ? "cursor-not-allowed bg-[#C2F800] text-black"
-                : "cursor-pointer bg-black/50 hover:bg-[#C2F800]"
+              ? "cursor-not-allowed bg-[#C2F800] text-black"
+              : "cursor-pointer bg-black/50 hover:bg-[#C2F800]"
             }`}
-        >
+            >
           <Heart
             className={`h-5 w-5 transition ${
               alreadySaved
-                ? "fill-black text-black"
-                : "text-white hover:text-black"
+              ? "fill-black text-black"
+              : "text-white hover:text-black"
             }`}
-          />
+            />
         </button>
 
         {/* Workout Badge */}
         <Link
           href={`/${id}`}
           className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full
-            bg-[#C2F800] px-3 py-1.5 text-xs font-bold text-black"
-        >
+          bg-[#C2F800] px-3 py-1.5 text-xs font-bold text-black"
+          >
           <Dumbbell className="h-4 w-4" />
           WORKOUT
         </Link>
@@ -81,10 +82,10 @@ const Card = ({ Item, id }) => {
             {Item.muscleGroups?.length > 0 ? (
               Item.muscleGroups.slice(0, 2).map((muscle, index) => (
                 <span
-                  key={`${muscle}-${index}`}
-                  className="rounded-full border border-[#C2F800]/30
-                    bg-[#C2F800]/10 px-3 py-1 text-xs font-semibold
-                    text-[#C2F800]"
+                key={`${muscle}-${index}`}
+                className="rounded-full border border-[#C2F800]/30
+                bg-[#C2F800]/10 px-3 py-1 text-xs font-semibold
+                text-[#C2F800]"
                 >
                   {muscle}
                 </span>
@@ -93,9 +94,9 @@ const Card = ({ Item, id }) => {
               <>
                 <span
                   className="rounded-full border border-[#C2F800]/30
-                    bg-[#C2F800]/10 px-3 py-1 text-xs font-semibold
-                    text-[#C2F800]"
-                >
+                  bg-[#C2F800]/10 px-3 py-1 text-xs font-semibold
+                  text-[#C2F800]"
+                  >
                   WORKOUT
                 </span>
               </>
@@ -105,8 +106,8 @@ const Card = ({ Item, id }) => {
           {/* Title */}
           <h2
             className="text-xl font-bold text-white transition-colors
-              duration-300 group-hover:text-[#C2F800]"
-          >
+            duration-300 group-hover:text-[#C2F800]"
+            >
             {Item.equipment}
           </h2>
 
@@ -123,8 +124,8 @@ const Card = ({ Item, id }) => {
             {/* Time */}
             <div
               className="flex flex-col items-center gap-1 rounded-xl
-                bg-[#1D2027] p-3"
-            >
+              bg-[#1D2027] p-3"
+              >
               <Clock className="h-5 w-5 text-[#C2F800]" />
 
               <span className="text-xs text-gray-500">Time</span>
@@ -137,8 +138,8 @@ const Card = ({ Item, id }) => {
             {/* Calories */}
             <div
               className="flex flex-col items-center gap-1 rounded-xl
-                bg-[#1D2027] p-3"
-            >
+              bg-[#1D2027] p-3"
+              >
               <Flame className="h-5 w-5 text-orange-400" />
 
               <span className="text-xs text-gray-500">Calories</span>
@@ -151,8 +152,8 @@ const Card = ({ Item, id }) => {
             {/* Rating */}
             <div
               className="flex flex-col items-center gap-1 rounded-xl
-                bg-[#1D2027] p-3"
-            >
+              bg-[#1D2027] p-3"
+              >
               <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
 
               <span className="text-xs text-gray-500">Rating</span>
@@ -165,6 +166,7 @@ const Card = ({ Item, id }) => {
         </div>
       </Link>
     </div>
+  </div>
   );
 };
 
