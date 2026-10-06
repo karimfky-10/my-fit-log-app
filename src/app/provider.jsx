@@ -18,7 +18,6 @@ export const FitLogProvider = ({ children }) => {
   // Add workout to Today's Plan
   const addToPlan = (workout) => {
     setTodayPlan((currentPlan) => {
-      // Duplicate workout prevent
       const alreadyExists = currentPlan.some(
         (item) => item.id === workout.id
       );
@@ -28,9 +27,7 @@ export const FitLogProvider = ({ children }) => {
       }
 
       // Maximum 5 workouts
-      if (currentPlan.length >= 5) {
-        return currentPlan;
-      }
+
 
       return [...currentPlan, workout];
     });

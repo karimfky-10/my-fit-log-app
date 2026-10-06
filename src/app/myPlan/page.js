@@ -5,6 +5,7 @@ import File from "../component/file";
 import After from "../component/after";
 import SaveCard from "../component/saveCard";
 import { useFitLog } from "../provider";
+import PlanCard from "../component/planCard";
 
 const MyPlanPage = () => {
   const { todayPlan, savedWorkouts } = useFitLog();
@@ -41,8 +42,8 @@ const MyPlanPage = () => {
       </div>
 
       {/* Stats */}
-      <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
-        <div className="rounded-2xl border border-gray-800 bg-[#13161D] p-5">
+      <div className="mt-5 grid grid-cols-1  sm:grid-cols-3">
+        <div className=" rounded-l-2xl border border-gray-800 bg-[#13161D] p-5">
           <p className="text-sm text-gray-500">Exercises</p>
 
           <p className="mt-1 text-2xl font-bold text-[#CCFF00]">
@@ -50,7 +51,7 @@ const MyPlanPage = () => {
           </p>
         </div>
 
-        <div className="rounded-2xl border border-gray-800 bg-[#13161D] p-5">
+        <div className=" border border-gray-800 bg-[#13161D] p-5">
           <p className="text-sm text-gray-500">Minutes</p>
 
           <p className="mt-1 text-2xl font-bold text-white">
@@ -58,7 +59,7 @@ const MyPlanPage = () => {
           </p>
         </div>
 
-        <div className="rounded-2xl border border-gray-800 bg-[#13161D] p-5">
+        <div className="rounded-r-2xl border border-gray-800 bg-[#13161D] p-5">
           <p className="text-sm text-gray-500">Calories</p>
 
           <p className="mt-1 text-2xl font-bold text-white">
@@ -68,7 +69,7 @@ const MyPlanPage = () => {
       </div>
 
       {/* Tabs */}
-      <div className="mt-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+      <div className="mt-10 flex justify-between gap-4 sm:flex-row sm:items-center">
         <div className="flex w-fit gap-1 rounded-2xl border border-gray-800 bg-[#13161D] p-2">
           <button
             type="button"
@@ -98,8 +99,9 @@ const MyPlanPage = () => {
         {/* Saved count */}
         <div className="text-sm text-gray-400">
           {isPlanTab
-            ? `${todayPlan.length}/5 workouts`
-            : `${savedWorkouts.length} saved workouts`}
+            ? `${todayPlan.length} workouts`
+            : `${savedWorkouts.length} saved workouts`
+            }
         </div>
       </div>
 
@@ -112,7 +114,7 @@ const MyPlanPage = () => {
         ) : (
           <div className="space-y-4">
             {savedWorkouts.map((items) => (
-              <SaveCard items={items} key={items.id} />
+              <PlanCard items={items} key={items.id} />
             ))}
           </div>
         )}
