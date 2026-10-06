@@ -5,7 +5,7 @@ import File from "../component/file";
 import After from "../component/after";
 import SaveCard from "../component/saveCard";
 import { useFitLog } from "../provider";
-import PlanCard from "../component/planCard";
+import PlanCard from "../component/saveCard";
 
 const MyPlanPage = () => {
   const { todayPlan, savedWorkouts } = useFitLog();
@@ -109,18 +109,17 @@ const MyPlanPage = () => {
       <div className="mt-8 rounded-2xl border border-gray-800 bg-[#0F1218] p-4 md:p-6">
         {currentWorkouts.length === 0 ? (
           <After />
-        ) : isPlanTab ? (
-          <File />
-        ) : (
-          <div className="space-y-4">
-            {savedWorkouts.map((items) => (
-              <PlanCard items={items} key={items.id} />
-            ))}
-          </div>
-        )}
+        ) : 
+        <File isPlanTab={isPlanTab} savedWorkouts={savedWorkouts}/>
+        //  : (
+        //   <div className="space-y-4">
+        //     {savedWorkouts.map((items) => (
+        //       <SaveCard items={items} key={items.id} />
+        //     ))}
+        //   </div>
+        // )
+        }
       </div>
     </div>
   );
-};
-
-export default MyPlanPage;
+};export default MyPlanPage;

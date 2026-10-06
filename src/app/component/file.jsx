@@ -3,9 +3,11 @@
 import { useState } from "react";
 import SaveCard from "./saveCard";
 import { useFitLog } from "../provider";
+import PlanCard from "./saveCard";
 
-const File = () => {
-  const { todayPlan } = useFitLog();
+const File = ({isPlanTab  }) => {
+
+  const { todayPlan,savedWorkouts } = useFitLog();
 
   const [sortBy, setSortBy] = useState("");
 
@@ -49,10 +51,21 @@ const File = () => {
       )}
 
       {/* Today's Plan */}
+      {
+
+      }
       <div className="space-y-4">
-        {sortedPlan.map((items) => (
+        { isPlanTab ? sortedPlan.map((items) => (
           <SaveCard items={items} key={items.id} />
-        ))}
+        )):
+         (
+          <div className="space-y-4">
+            {savedWorkouts.map((items) => (
+              <PlanCard items={items} key={items.id} />
+            ))}
+          </div>
+        )
+        }
       </div>
     </div>
   );
