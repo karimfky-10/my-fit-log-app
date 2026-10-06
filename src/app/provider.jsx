@@ -6,6 +6,7 @@ import { createContext, useContext, useState } from "react";
 const FitLogContext = createContext();
 
 export const FitLogProvider = ({ children }) => {
+  
   // Today's Plan
   const [todayPlan, setTodayPlan] = useState([]);
 

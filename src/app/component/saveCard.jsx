@@ -5,17 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useFitLog } from "../provider";
 
-const PlanCard = ({items}) => {
-    const { removeSavedWorkout, markAsDone } = useFitLog();
+const SaveCard = ({ items }) => {
+  const { removeFromPlan, markAsDone } = useFitLog();
 
-  const handleRemove = () => {
-    removeSavedWorkout(items.id);
-  };
-
-    return (
-            <div className=" flex h-40 justify-between  rounded-2xl border border-gray-800 bg-[#15171D] p-4 md:flex-row md:items-center md:justify-between">
+  return (
+    <div className="flex flex-col gap-5 rounded-2xl border border-gray-800 bg-[#15171D] p-4 md:flex-row md:items-center md:justify-between">
       {/* Workout Information */}
-      <div className="flex justify-start gap-4 w-2/3  sm:flex-row sm:items-center">
+      <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-center">
         <Image
           src={items.image}
           width={200}
@@ -24,10 +20,10 @@ const PlanCard = ({items}) => {
           className="h-28 w-full rounded-xl object-cover sm:w-48"
         />
 
-        <div>
-          <h1 className="text-xl font-bold text-white">
+        <div className="min-w-0">
+          <h2 className="text-xl font-bold text-white">
             {items.equipment}
-          </h1>
+          </h2>
 
           <p className="mt-1 text-sm text-gray-400">
             {items.description}
@@ -54,28 +50,35 @@ const PlanCard = ({items}) => {
       </div>
 
       {/* Actions */}
-     
-             <div className="flex w-1/2  items-center  justify-end  gap-2   ">
+      <div className="flex flex-wrap items-center gap-2">
         <Link
           href={`/${items.id}`}
-          className="rounded-2xl border border-gray-700 px-5 py-3 text-center text-sm font-semibold text-white transition hover:border-[#C2F800] hover:text-[#C2F800]"
+          className="rounded-2xl border border-gray-700 px-4 py-3 text-center text-sm font-semibold text-white transition hover:border-[#C2F800] hover:text-[#C2F800]"
         >
           View Details
         </Link>
 
-        
+        <button
+          type="button"
+          onClick={()=> markAsDone(items)}
+          className="flex items-center justify-center gap-2 rounded-2xl bg-[#CCFF00] px-4 py-3 text-sm font-bold text-black transition hover:bg-[#b8e600] active:scale-95"
+        >
+          <Check size={18} />
+          Mark as Done
+        </button>
 
         <button
           type="button"
-          onClick={handleRemove}
-          className="flex  items-center  gap-2 px-4  text-red-400 transition  active:scale-95"
+          onClick={() => removeFromPlan(items.id)}
+          aria-label={`Remove ${items.equipment} from today's plan`}
+          className="flex items-center justify-center rounded-xl p-3 text-red-400 transition hover:bg-red-500/10 active:scale-95"
         >
-          <X />
+          <X size={18} />
         </button>
-        </div>
       </div>
-    
-    );
+    </div>
+  );
 };
 
-export default PlanCard;
+export default SaveCard;
+
